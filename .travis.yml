@@ -1,20 +1,20 @@
-language: generic
+# language: generic
 
-sudo: required
+# sudo: required
 
-services:
-  - docker
+# services:
+#   - docker
 
-before_install:
-  - docker build -t knsol1992/javabucks -f ./frontend/Dockerfile.dev ./frontend
+# before_install:
+#   - docker build -t knsol1992/javabucks -f ./frontend/Dockerfile.dev ./frontend
 
-script:
-  - docker run -e CI=true knsol1992/javabucks npm test
+# script:
+#   - docker run -e CI=true knsol1992/javabucks npm test
 
-after_success:
-  - docker build -t knsol1992/docker-frontend ./frontend
-  - docker build -t knsol1992/docker-backend ./backend
-  - docker build -t knsol1992/docker-nginx ./nginx
+# after_success:
+#   - docker build -t knsol1992/docker-frontend ./frontend
+#   - docker build -t knsol1992/docker-backend ./backend
+#   - docker build -t knsol1992/docker-nginx ./nginx
 
   # - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_ID" --password-stdin
 

@@ -9,30 +9,23 @@ services:
       - ./frontend:/app
     stdin_open: true
 
-  nginx:
+  nginx: 
     restart: always
     build:
       dockerfile: Dockerfile
       context: ./nginx
-    ports:
+    ports: 
       - "3000:80"
 
   backend:
-    build:
+    build: 
       dockerfile: Dockerfile.dev
       context: ./backend
     container_name: app_backend
     volumes:
       - /app/node_modules
       - ./backend:/app
-
-    # environment: 
-    #   MYSQL_HOST: $MYSQL_HOST 
-    #   MYSQL_USER: $MYSQL_USER 
-    #   MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
-    #   MYSQL_DATABASE: $MYSQL_DATABASE
-    #   MYSQL_PORT: $MYSQL_PORT   
-
+    
   # mysql:
   #   build: ./mysql
   #   restart: unless-stopped
