@@ -6,7 +6,7 @@ const initialState = {};
 /* 액션 타입 설정 */
 const GET_MENULIST = 'menu/GET_MENULIST';
 const GET_MENU = 'menu/GET_MENU';
-const GET_DRINK = 'menu/GET_DRINK';
+const GET_DRINK = 'api/GET_VALUE';
 const REGIST_MENU = 'menu/REGIST_MENU';
 const MODIFY_MENU = 'menu/MODIFY_MENU';
 const DELETE_MENU = 'menu/DELETE_MENU';

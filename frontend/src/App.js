@@ -61,6 +61,7 @@ export default App;
 
 //     axios.post('/api/value', { value: value })
 //       .then(response => {
+//         console.log(response);
 //         if (response.data.success) {
 //           console.log('response', response)
 //           setLists([...lists, response.data]) 

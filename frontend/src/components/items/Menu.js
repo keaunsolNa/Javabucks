@@ -17,7 +17,7 @@ function Menu({ id }) {
     );
 
     return (
-        menu && (
+        menu  (
             <>
                 <h3>메뉴 이름 : { menu.menuName }</h3>
                 <h3>메뉴 가격 : { menu.menuPrice }</h3>

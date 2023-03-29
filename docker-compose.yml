@@ -26,7 +26,7 @@ services:
       - /app/node_modules
       - ./backend:/app
     environment:
-      -  WDS_SOCKET_PORT=0
+      -  WDS_SOCKET_PORT=5694
       
     # environment: 
     #   MYSQL_HOST: $MYSQL_HOST 

@@ -8,7 +8,6 @@ function MenuList() {
 
     const result = useSelector(state => state.menuReducer);
 
-    console.log(result)
     const menuList = result.menulist;
     const dispatch = useDispatch();
 
@@ -24,7 +23,7 @@ function MenuList() {
     return (
         menuList && (
             <div className="menuBox">
-                { menuList.map(menu => <MenuItem key={ menu.id } menu={ menu }/>) }
+                { menuList.map(drink => <MenuItem key={ drink.DRINK_ID } drink={ drink }/>) }
             </div>
         )
     );
