@@ -7,10 +7,10 @@ import { callGetMenuListAPI } from "../../apis/MenuAPICalls";
 function MenuList() {
 
     const result = useSelector(state => state.menuReducer);
+
+    console.log(result)
     const menuList = result.menulist;
     const dispatch = useDispatch();
-
-    console.log(menuList);
 
     useEffect(
         () => {

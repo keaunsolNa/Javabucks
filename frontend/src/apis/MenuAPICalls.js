@@ -7,6 +7,7 @@ export function callGetMenuListAPI() {
     
     /* redux-thunk(미들 웨어)를 이용한 비동기 처리 */
     return async (dispatch, getState) => {
+        const result2 = await request('GET', '/driink');
         
         /* Api의 axios 처리 참조  */
         const result = await request('GET', '/menu');
@@ -33,7 +34,6 @@ export function callGetMenuAPI(id) {
 export function callRegistMenuAPI(menu) {
     
     console.log('registMenu api calls...');
-
     return async (dispatch, getState) => {
     
         const result = await request('POST', '/menu/', menu);
