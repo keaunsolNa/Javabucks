@@ -1,21 +1,23 @@
 import { request } from "./Api"; 
 import { getMenulist, getMenu, registMenu, modifyMenu, deleteMenu } from "../modules/MenuModule";
 
+// 메뉴 리스트 호출
 export function callGetMenuListAPI() {
     
     console.log('getMenuList api calls...');
     
     /* redux-thunk(미들 웨어)를 이용한 비동기 처리 */
     return async (dispatch, getState) => {
-
         /* Api의 axios 처리 참조  */
+        console.log('before await')
         const result = await request('GET', `/menu`);
-        
+        console.log("result :  " + result)
         /* action 생성 함수에 결과 전달하며 dispatch 호출 */
         dispatch(getMenulist(result));
     }
 }
 
+// 상세 메뉴 호출
 export function callGetMenuAPI(id) {
     
     console.log('getMenu api calls...');
@@ -28,13 +30,13 @@ export function callGetMenuAPI(id) {
     }
 }
 
+// 메뉴 등록
 export function callRegistMenuAPI(menu) {
     
     console.log('registMenu api calls...');
     return async (dispatch, getState) => {
-    
+        
         const result = await request('POST', '/menu/', menu);
-        console.log('registMenu result : ', result);
     
         dispatch(registMenu(result));
     }

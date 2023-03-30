@@ -12,21 +12,24 @@ app.use(bodyParser.json());
 
 app.get('/menu', function (req, res) {
     //데이테베이스에서 음료 정보 가져오기
+    console.log('menulist 호출...')
     db.pool.query('SELECT * FROM DRINK;',
         (err, results, fileds) => {
-            if (err)  
+            if (err)  {
+                console.log("ERROR : " + err)
                 return res.status(500).send(err)
-            else 
+            }
+            else {
+                console.log("result : " + results)
                 return res.json(results)
+            }
         })
 })
 
 app.get(`/menu/:menuId`, function (req, res) {
-    console.log('server 도착')
-    console.log(req.params.menuId)
 
     const menuId = req.params.menuId;
-    //데이테베이스에서 음료 정보 가져오기
+    //데이테베이스에서 음료 상세 정보 가져오기
     db.pool.query(`SELECT * FROM DRINK WHERE DRINK_ID = ${menuId};`,
         (err, results, fileds) => {
             if (err)  
@@ -37,16 +40,33 @@ app.get(`/menu/:menuId`, function (req, res) {
 })
 
 // 클라이언트에서 입력한 값을 데이터베이스 lists 테이블에 넣어주기
-app.post('/api/value', function (req, res, next) {
-    //데이터베이스에 값 넣어주기
-    db.pool.query(`INSERT INTO PRODUCT_NUTRITION_INFORMATION VALUES ('4', '145kcal', '18g', '15g', '85mg', '6g', '5g', '15mg', '0g', '195mg', '3.2g')`,
+app.post('/menu', function (req, res, next) {
+
+    const drinkNameKor = req.body.drinkNameKor;
+    const drinkNameEng = req.body.drinkNameEng;
+    const drinkType = req.body.drinkType;
+    const drinkSize = req.body.drinkSize;
+    const drinkHotIce = req.body.drinkHotIce;
+    const allergyTriggers = req.body.allergyTriggers;
+    const image = req.body.image;
+    const drinkPrice = req.body.drinkPrice;
+    const drinkInfo = req.body.drinkInfo;
+
+    // 데이터베이스에 값 넣어주기
+    db.pool.query(
+                    `INSERT INTO DRINK 
+                        (DRINK_TYPE, DRINK_HOT_ICE, ALLERGY_TRIGGERS, DRINK_SIZE, DRINK_NAME_KOR, DRINK_NAME_ENG, DRINK_PRICE, DRINK_INFO, DRINK_IMAGE) 
+                    VALUES 
+                        ("${drinkType}", "${drinkHotIce}", "${allergyTriggers}", "${drinkSize}", "${drinkNameKor}", "${drinkNameEng}","${drinkPrice}", "${drinkInfo}", "${image}")`,
+                    
         (err, results, fileds) => {
-            console.log(err)
-            console.log(results)
-            if (err)
+            if (err){
+                console.log(err)
                 return res.status(500).send(err)
-            else
+            }
+            else{
                 return res.json({ success: true, value: req.body.value })
+            }
         })
 })
 

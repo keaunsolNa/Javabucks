@@ -1,7 +1,7 @@
 function Header() {
     
     return (
-        <h1>Redux 연습</h1>
+        <h1>Javabucks</h1>
     );
 }
 

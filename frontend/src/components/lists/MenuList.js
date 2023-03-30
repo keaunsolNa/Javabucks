@@ -5,10 +5,12 @@ import { callGetMenuListAPI } from "../../apis/MenuAPICalls";
 
 
 function MenuList() {
-
     const result = useSelector(state => state.menuReducer);
 
+    console.log(result)
     const menuList = result.menulist;
+
+    console.log(menuList)
     const dispatch = useDispatch();
 
     useEffect(
@@ -24,7 +26,6 @@ function MenuList() {
     return (
         menuList && (
             <div>
-                
                 <div className="menuBox">
                     { menuList.map(drink => <MenuItem key={ drink.DRINK_ID } drink={ drink }/>) }
                 </div>

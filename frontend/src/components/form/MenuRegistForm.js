@@ -13,15 +13,15 @@ function MenuRegistForm() {
     /* 입력 값 state 저장 */
     const [registMenu, setRegistMenu] = useState(
         {
-            id: 0,
-            menuName: '',
-            menuPrice: 0,
-            categoryName: '한식',
-            isOrderable: false,
-            detail : {
-                description: '',
-                image: ''
-            }
+            drinkNameKor: '',
+            drinkNameEng: '',
+            drinkPrice: 0,
+            drinkType: 'Espresso',
+            drinkSize: 'Short',
+            drinkHotIce: 'HotOnly',
+            allergyTriggers: '',
+            drinkInfo: '',
+            image: ''
         }
     );
     
@@ -35,16 +35,6 @@ function MenuRegistForm() {
         switch(name) {
             case 'menuPrice' : 
                 value = parseInt(value); 
-                break;
-            case 'isOrderable' : 
-                value = !!value; 
-                break;
-            case 'description' : 
-                name = 'detail';
-                value = {
-                    description : value,
-                    image : registMenu.detail.image
-                };
                 break;
         }
 
@@ -62,16 +52,11 @@ function MenuRegistForm() {
     /* 파일 첨부 시 동작하는 이벤트 핸들러 */
     const fileChangeHandler = async (e) => {
         const file = e.target.files[0];
-        console.log(file);
         const base64 = await convertBase64(file);
-        console.log(base64);
         setRegistMenu(
             {
                 ...registMenu,
-                detail : {
-                    description : registMenu.detail.description,
-                    image : base64
-                }
+                image : base64
             }
         );
 
@@ -106,36 +91,59 @@ function MenuRegistForm() {
 
     const onClickHandler = () => {
         /* registMenu에 대한 유효성 검사 후 호출 */
+        console.log('onClickHandler도착')
         dispatch(callRegistMenuAPI(registMenu));
     }
 
     return(
         <>  
-            <label>메뉴 이름 : </label>
-            <input type="text" name="menuName" value={ registMenu.menuName } onChange={ onChangeHandler }/>
+            <label>메뉴 이름(한글) : </label>
+            <input type="text" name="drinkNameKor" value={ registMenu.drinkNameKor } onChange={ onChangeHandler }/>
+            <br/>
+            <label>메뉴 이름(영문) : </label>
+            <input type="text" name="drinkNameEng" value={ registMenu.drinkNameEng } onChange={ onChangeHandler }/>
             <br/>
             <label>메뉴 가격 : </label>
-            <input type="number" name="menuPrice" value={ registMenu.menuPrice } onChange={ onChangeHandler }/>
+            <input type="number" name="drinkPrice" value={ registMenu.drinkPrice } onChange={ onChangeHandler }/>
             <br/>
-            <label>카테고리 : </label>
-            <select name="categoryName" value={ registMenu.categoryName } onChange={ onChangeHandler }>
-                <option>한식</option>
-                <option>일식</option>
-                <option>서양</option>
-                <option>동양</option>
-                <option>커피</option>
-                <option>쥬스</option>
-                <option>기타</option>
+            <label>음료 종류 : </label>
+            <select name="drinkType" value={ registMenu.drinkType } onChange={ onChangeHandler }>
+                <option>리저브 에스프레소(Reserve Espresso)</option>
+                <option>리저드 드립(Reserve Drip)</option>
+                <option>리프레셔(Javabucks Refreshers)</option>
+                <option>콜드 브루(Cold Brew)</option>
+                <option>블론드(Blonde Coffee)</option>
+                <option>에스프레소(Espresso)</option>
+                <option>디카페인 커피(Decaf Coffe)</option>
+                <option>프라푸치노(Frappuccino)</option>
+                <option>블렌디드(Blended)</option>
+                <option>피지오(Javabucks Fizzio)</option>
+                <option>티바나(Teavana)</option>
+                <option>브루드 커피(Brewed Coffe)</option>
+                <option>아포카토/기타(Others)</option>
+                <option>병음료(RTD)</option>
             </select>
             <br/>
-            <label>판매 여부 : </label>
-            <select name="isOrderable" value={ registMenu.isOrderable } onChange={ onChangeHandler }>
-                <option value="true">판매 가능</option>
-                <option value="false">판매 불가</option>
+            <label>음료 사이즈 : </label>
+            <select name="drinkSize" value={ registMenu.drinkSize } onChange={ onChangeHandler }>
+                <option>Short</option>
+                <option>Tall</option>
+                <option>Grande</option>
+                <option>Venti</option>
             </select>
             <br/>
-            <label>설명 : </label>
-            <textarea name="description" value={ registMenu.detail.description } onChange={ onChangeHandler }></textarea>
+            <label>HOT/ICE 여부  : </label>
+            <select name="drinkHotIce" value={ registMenu.drinkHotIce } onChange={ onChangeHandler }>
+                <option>HotOnly</option>
+                <option>IceOnly</option>
+                <option>Both</option>
+            </select>
+            <br/>
+            <label>알레르기 유발 요인  : </label>
+            <input type="text" name="allergyTriggers" value={ registMenu.allergyTriggers } onChange={ onChangeHandler }/>
+            <br/>
+            <label>메뉴 설명 : </label>
+            <textarea name="drinkInfo" value={ registMenu.drinkInfo } onChange={ onChangeHandler }></textarea>
             <br/>
             <label>사진 : </label>
             <input 
