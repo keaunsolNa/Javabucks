@@ -9,7 +9,7 @@ export function callGetMenuListAPI() {
     return async (dispatch, getState) => {
 
         /* Api의 axios 처리 참조  */
-        const result = await request('GET', '/api/drinks');
+        const result = await request('GET', `/menu`);
         
         /* action 생성 함수에 결과 전달하며 dispatch 호출 */
         dispatch(getMenulist(result));
@@ -23,7 +23,6 @@ export function callGetMenuAPI(id) {
     return async (dispatch, getState) => {
     
         const result = await request('GET', `/menu/${id}`);
-        console.log('getMenu result : ', result);
     
         dispatch(getMenu(result));
     }

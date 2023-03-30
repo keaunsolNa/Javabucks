@@ -14,6 +14,7 @@ function MenuList() {
     useEffect(
         () => {
             /* menuList 호출 API */
+            console.log('MenuList.js useEffect')
             dispatch(callGetMenuListAPI());
         },
         []
@@ -22,8 +23,11 @@ function MenuList() {
 
     return (
         menuList && (
-            <div className="menuBox">
-                { menuList.map(drink => <MenuItem key={ drink.DRINK_ID } drink={ drink }/>) }
+            <div>
+                
+                <div className="menuBox">
+                    { menuList.map(drink => <MenuItem key={ drink.DRINK_ID } drink={ drink }/>) }
+                </div>
             </div>
         )
     );

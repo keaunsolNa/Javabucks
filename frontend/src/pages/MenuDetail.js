@@ -12,7 +12,6 @@ function MenuDetail() {
     const dispatch = useDispatch();
     const { id } = useParams();
     const result = useSelector(state => state.menuReducer);
-
     const updateHandler = () => navigate(`/menu/modify/${id}`);
     const deleteHandler = () => dispatch(callDeleteMenuAPI(id));
 
@@ -31,8 +30,8 @@ function MenuDetail() {
         <div>
             <h1>메뉴 상세</h1>
             <h1>
-                { /* 로그인 된 상황에만 button이 보이도록 조건부 랜더링 */ }
-                { (loginStatus) && 
+                { 
+                // (loginStatus) && 
                     <>
                         <button onClick={ updateHandler }>메뉴 수정</button>
                         <button onClick={ deleteHandler }>메뉴 삭제</button>

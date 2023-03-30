@@ -6,16 +6,15 @@ const initialState = {};
 /* 액션 타입 설정 */
 const GET_MENULIST = 'menu/GET_MENULIST';
 const GET_MENU = 'menu/GET_MENU';
-const GET_DRINK = 'api/GET_VALUE';
 const REGIST_MENU = 'menu/REGIST_MENU';
 const MODIFY_MENU = 'menu/MODIFY_MENU';
 const DELETE_MENU = 'menu/DELETE_MENU';
 
 /* 메뉴 관련 액션 함수 */
-export const { menu : { getMenulist, getMenu, getDrink, registMenu, modifyMenu, deleteMenu }} = createActions({
+console.log('액션 호출');
+export const { menu : { getMenulist, getMenu, registMenu, modifyMenu, deleteMenu }} = createActions({
     [GET_MENULIST]: (res) => ({ menulist : res }),
-    [GET_MENU]: (res) => ({ menu : res }),
-    [GET_DRINK]: (res) => ({ drink : res }),
+    [GET_MENU]: (res) => ({ drink : res }),
     [REGIST_MENU]: (res) => ({ regist : res }),
     [MODIFY_MENU]: (res) => ({ modify : res }),
     [DELETE_MENU]: (res) => ({ delete : res }),
@@ -28,9 +27,6 @@ const menuReducer = handleActions(
             return payload;
         },
         [GET_MENU]: (state, { payload }) => {
-            return payload;
-        },
-        [GET_DRINK]: (state, { payload }) => {
             return payload;
         },
         [REGIST_MENU]: (state, { payload }) => {

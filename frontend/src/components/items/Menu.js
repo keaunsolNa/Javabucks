@@ -5,7 +5,7 @@ import { callGetMenuAPI } from '../../apis/MenuAPICalls';
 function Menu({ id }) {
 
     const result = useSelector(state => state.menuReducer);
-    const menu = result.menu;
+    const drink = result.drink;
     const dispatch = useDispatch();
 
     useEffect(
@@ -17,13 +17,16 @@ function Menu({ id }) {
     );
 
     return (
-        menu  (
+
+        drink && (
             <>
-                <h3>메뉴 이름 : { menu.menuName }</h3>
-                <h3>메뉴 가격 : { menu.menuPrice }</h3>
-                <h3>메뉴 종류 : { menu.categoryName }</h3>
-                <h3>메뉴 상세 : { menu.detail.description }</h3>
-                <img src={ menu.detail.image } style={ { maxWidth: 500 } } alt={ menu.menuName }/>
+                <h3>메뉴 이름 : { drink[0].DRINK_NAME_KOR }</h3>
+                <h3>메뉴 영문이름 : { drink[0].DRINK_NAME_ENG }</h3>
+                <h3>메뉴 가격 : { drink[0].DRINK_PRICE }</h3>
+                <h3>메뉴 크기 : { drink[0].DRINK_SIZE }</h3>
+                <h3>메뉴 종류 : { drink[0].DRINK_TYPE }</h3>
+                <h3>메뉴 설명 : { drink[0].DRINK_INFO }</h3>
+                {/* <img src={ menu.detail.image } style={ { maxWidth: 500 } } alt={ menu.menuName }/> */}
             </>
         )
     );

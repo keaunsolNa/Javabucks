@@ -3,28 +3,16 @@ import { Link } from  'react-router-dom';
 function MenuItem({ drink }) {
     console.log('MenuItem 호출....')
     return (
-        // <Link to={ `/menu/${ menu.id }` }>
-            <div className="menuItem">
-                <h3>이름 : { drink.DRINK_NAME_KOR }</h3>
-                <h3>가격 : { drink.DRINK_PRICE }</h3>
-                <h4>종류 : { drink.DRINK_TYPE }</h4>
-            </div>
-        // </Link>
+        <>
+            <Link to={ `/menu/${ drink.DRINK_ID }` }>
+                <div className="menuItem">
+                    <h3>이름 : { drink.DRINK_NAME_KOR }</h3>
+                    <h3>가격 : { drink.DRINK_PRICE }</h3>
+                    <h4>종류 : { drink.DRINK_TYPE }</h4>
+                </div>
+            </Link>
+        </>
     );
 }
-// function MenuItem({ menu }) {
-//     console.log(menu)
-//     return (
-//         <Link to={ `/menu/${ menu.id }` }>
-//             <div className="menuItem">
-//                 {/* <h3>이름 : { lists.value }</h3> */}
-//                 {/* <h3>test : { lists.testtest }</h3> */}
-//                 <h3>이름 : { menu.menuName }</h3>
-//                 <h3>가격 : { menu.menuPrice }</h3>
-//                 <h4>종류 : { menu.categoryName }</h4>
-//             </div>
-//         </Link>
-//     );
-// }
 
 export default MenuItem;
