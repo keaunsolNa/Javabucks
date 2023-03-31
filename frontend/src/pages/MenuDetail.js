@@ -6,6 +6,7 @@ import { callDeleteMenuAPI } from '../apis/MenuAPICalls';
 
 function MenuDetail() {
 
+    console.log('MenuDetail.js')
     /* 로그인 상태 확인 */
     const loginStatus = !!localStorage.getItem('isLogin');
     const navigate = useNavigate();

@@ -9,9 +9,7 @@ export function callGetMenuListAPI() {
     /* redux-thunk(미들 웨어)를 이용한 비동기 처리 */
     return async (dispatch, getState) => {
         /* Api의 axios 처리 참조  */
-        console.log('before await')
-        const result = await request('GET', `/menu`);
-        console.log("result :  " + result)
+        const result = await request('GET', `/menulist`);
         /* action 생성 함수에 결과 전달하며 dispatch 호출 */
         dispatch(getMenulist(result));
     }
@@ -42,14 +40,14 @@ export function callRegistMenuAPI(menu) {
     }
 }
 
+// 메뉴 수정
 export function callModifyMenuAPI(menu) {
     
     console.log('modifyMenu api calls...');
-
+    console.log(menu)
     return async (dispatch, getState) => {
     
         const result = await request('PUT', `/menu/${menu.id}`, menu);
-        console.log('modifyMenu result : ', result);
     
         dispatch(modifyMenu(result));
     }

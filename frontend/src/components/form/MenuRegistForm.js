@@ -45,8 +45,6 @@ function MenuRegistForm() {
             }
         );
 
-        console.log(registMenu);
-
     }
 
     /* 파일 첨부 시 동작하는 이벤트 핸들러 */
@@ -91,7 +89,6 @@ function MenuRegistForm() {
 
     const onClickHandler = () => {
         /* registMenu에 대한 유효성 검사 후 호출 */
-        console.log('onClickHandler도착')
         dispatch(callRegistMenuAPI(registMenu));
     }
 

@@ -7,16 +7,13 @@ import { callGetMenuListAPI } from "../../apis/MenuAPICalls";
 function MenuList() {
     const result = useSelector(state => state.menuReducer);
 
-    console.log(result)
     const menuList = result.menulist;
 
-    console.log(menuList)
     const dispatch = useDispatch();
 
     useEffect(
         () => {
             /* menuList 호출 API */
-            console.log('MenuList.js useEffect')
             dispatch(callGetMenuListAPI());
         },
         []
@@ -27,7 +24,7 @@ function MenuList() {
         menuList && (
             <div>
                 <div className="menuBox">
-                    { menuList.map(drink => <MenuItem key={ drink.DRINK_ID } drink={ drink }/>) }
+                    { menuList.map(menu => <MenuItem key={ menu.DRINK_ID } menu={ menu }/>) }
                 </div>
             </div>
         )
