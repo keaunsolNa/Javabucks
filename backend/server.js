@@ -10,6 +10,23 @@ const app = express();
 // // json 형대토 오는 요청의 본문을 해석해줄수있게 등록
 app.use(bodyParser.json());
 
+// 데이터베이스에서 음료 카테고리 가져오기
+app.get('/api/categorylist/:drinkTypeKor', function (req, res) {
+
+    const menuCategory = req.params.drinkTypeKor;
+
+    console.log(menuCategory)
+    db.pool.query(`SELECT * FROM DRINK WHERE DRINK_TYPE_KOR = ${menuCategory};`,
+        (err, results, fileds) => {
+            if (err)  {
+                console.log("ERROR : " + err)
+                return res.status(500).send(err)
+            }
+            else 
+                return res.json(results)
+            
+        })
+})
 
 //데이테베이스에서 음료 정보 가져오기
 app.get('/api/menulist', function (req, res) {
@@ -62,7 +79,8 @@ app.post('/api/menu', function (req, res, next) {
 
     const drinkNameKor = req.body.drinkNameKor;
     const drinkNameEng = req.body.drinkNameEng;
-    const drinkType = req.body.drinkType;
+    const drinkTypeKor = req.body.drinkTypeKor;
+    const drinkTypeEng = req.body.drinkTypeEng;
     const drinkSize = req.body.drinkSize;
     const drinkHotIce = req.body.drinkHotIce;
     const allergyTriggers = req.body.allergyTriggers;
@@ -73,9 +91,9 @@ app.post('/api/menu', function (req, res, next) {
     // 데이터베이스에 값 넣어주기
     db.pool.query(
                     `INSERT INTO DRINK 
-                        (DRINK_TYPE, DRINK_HOT_ICE, ALLERGY_TRIGGERS, DRINK_SIZE, DRINK_NAME_KOR, DRINK_NAME_ENG, DRINK_PRICE, DRINK_INFO, DRINK_IMAGE) 
+                        (DRINK_TYPE_KOR, DRINK_TYPE_ENG, DRINK_HOT_ICE, ALLERGY_TRIGGERS, DRINK_SIZE, DRINK_NAME_KOR, DRINK_NAME_ENG, DRINK_PRICE, DRINK_INFO, DRINK_IMAGE) 
                     VALUES 
-                        ("${drinkType}", "${drinkHotIce}", "${allergyTriggers}", "${drinkSize}", "${drinkNameKor}", "${drinkNameEng}","${drinkPrice}", "${drinkInfo}", "${image}")`,
+                        ("${drinkTypeKor}", "${drinkTypeEng}", "${drinkHotIce}", "${allergyTriggers}", "${drinkSize}", "${drinkNameKor}", "${drinkNameEng}","${drinkPrice}", "${drinkInfo}", "${image}")`,
                     
         (err, results, fileds) => {
             if (err){

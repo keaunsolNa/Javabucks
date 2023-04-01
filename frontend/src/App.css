@@ -24,8 +24,21 @@ a {
 
 .menuItem {
   width: 300px;
+  height: 200px;
   cursor: pointer;
-  padding : 5px;
+}
+
+.menuImage {
+  width: 300px;
+  height: 200px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.menuImageWrapper {
+  margin: 0 auto;
+  padding: 30px;
+  max-width: 1170px;
 }
 
 .menuItem:hover {

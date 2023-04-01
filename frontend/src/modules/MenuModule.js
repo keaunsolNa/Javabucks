@@ -11,7 +11,7 @@ const MODIFY_MENU = 'menu/MODIFY_MENU';
 const DELETE_MENU = 'menu/DELETE_MENU';
 
 /* 메뉴 관련 액션 함수 */
-export const { menu : { getMenulist, getMenu, registMenu, modifyMenu, deleteMenu }} = createActions({
+export const { menu : { getMenulist, getMenu, getCategory, registMenu, modifyMenu, deleteMenu }} = createActions({
     [GET_MENULIST]: (res) => ({ menulist : res }),
     [GET_MENU]: (res) => ({ menu : res }),
     [REGIST_MENU]: (res) => ({ regist : res }),

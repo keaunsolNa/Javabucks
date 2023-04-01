@@ -24,6 +24,18 @@ export function callGetMenuAPI(id) {
     }
 }
 
+// 카테고리별 메뉴 조회
+export function callGetMenuCategoryAPI(categoryName) {
+    
+    return async (dispatch, getState) => {
+        console.log("category : " + categoryName)
+        const result = await request('GET', `/api/categorylist/"${categoryName}"`);
+    
+        console.log(result)
+        dispatch(getMenulist(result));
+    }
+}
+
 // 메뉴 등록
 export function callRegistMenuAPI(menu) {
     
@@ -46,6 +58,7 @@ export function callModifyMenuAPI(menu) {
     }
 }
 
+// 메뉴 삭제
 export function callDeleteMenuAPI(id) {
     
     return async (dispatch, getState) => {
