@@ -12,9 +12,8 @@ app.use(bodyParser.json());
 
 
 //데이테베이스에서 음료 정보 가져오기
-app.get('/menulist', function (req, res) {
+app.get('/api/menulist', function (req, res) {
 
-    console.log('menulist 호출...')
     db.pool.query('SELECT * FROM DRINK;',
         (err, results, fileds) => {
             if (err)  {
@@ -28,7 +27,7 @@ app.get('/menulist', function (req, res) {
 })
 
 //데이테베이스에서 음료 상세 정보 가져오기
-app.get(`/menu/:menuId`, function (req, res) {
+app.get(`/api/menu/:menuId`, function (req, res) {
 
     const menuId = req.params.menuId;
     db.pool.query(`SELECT * FROM DRINK WHERE DRINK_ID = ${menuId};`,
@@ -42,8 +41,24 @@ app.get(`/menu/:menuId`, function (req, res) {
         })
 })
 
+// 일치하는 ID 탐색
+app.get(`/api/userlogin/:userId`, function(req, res) {
+
+    const userID = req.params.userId;
+
+    db.pool.query(`SELECT * FROM USER WHERE USER_ID = "${userID}";`,
+        (err, results, fileds) => {
+            if(err) {
+                console.log(err)
+                return res.status(500).send(err)
+            }
+            else
+                return res.json(results)
+        })
+})
+
 // 신규 음료 등록
-app.post('/menu', function (req, res, next) {
+app.post('/api/menu', function (req, res, next) {
 
     const drinkNameKor = req.body.drinkNameKor;
     const drinkNameEng = req.body.drinkNameEng;
@@ -73,9 +88,8 @@ app.post('/menu', function (req, res, next) {
         })
 })
 // 기존 음료 수정
-app.put('/menu/:menuId', function (req, res, next) {
+app.put('/api/menu/:menuId', function (req, res, next) {
 
-    console.log('server.js 메뉴 수정')
     const drinkId = req.params.menuId;
     const drinkNameKor = req.body.drinkNameKor;
     const drinkNameEng = req.body.drinkNameEng;
@@ -114,7 +128,7 @@ app.put('/menu/:menuId', function (req, res, next) {
 })
 
 // 기존 메뉴 삭제
-app.delete('/menu/:menuId', function (req, res, next) {
+app.delete('/api/menu/:menuId', function (req, res, next) {
     const drinkId = req.params.menuId;
 
     db.pool.query(

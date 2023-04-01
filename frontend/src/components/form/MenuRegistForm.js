@@ -57,8 +57,6 @@ function MenuRegistForm() {
                 image : base64
             }
         );
-
-        console.log(registMenu);
     }
 
     /* FileReader API를 통해 input type="file"에 첨부 된 파일을 base64 인코딩 형식으로 변환 */

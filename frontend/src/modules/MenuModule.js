@@ -10,9 +10,7 @@ const REGIST_MENU = 'menu/REGIST_MENU';
 const MODIFY_MENU = 'menu/MODIFY_MENU';
 const DELETE_MENU = 'menu/DELETE_MENU';
 
-console.log('MenuModuls')
 /* 메뉴 관련 액션 함수 */
-console.log('액션 호출');
 export const { menu : { getMenulist, getMenu, registMenu, modifyMenu, deleteMenu }} = createActions({
     [GET_MENULIST]: (res) => ({ menulist : res }),
     [GET_MENU]: (res) => ({ menu : res }),

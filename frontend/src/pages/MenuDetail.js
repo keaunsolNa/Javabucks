@@ -6,7 +6,6 @@ import { callDeleteMenuAPI } from '../apis/MenuAPICalls';
 
 function MenuDetail() {
 
-    console.log('MenuDetail.js')
     /* 로그인 상태 확인 */
     const loginStatus = !!localStorage.getItem('isLogin');
     const navigate = useNavigate();
@@ -23,7 +22,7 @@ function MenuDetail() {
                 alert('메뉴 삭제');
                 navigate(`/menu`);
             }
-        }, // eslint-disable-next-line
+        }, 
         [result]
     );
 
@@ -31,8 +30,7 @@ function MenuDetail() {
         <div>
             <h1>메뉴 상세</h1>
             <h1>
-                { 
-                // (loginStatus) && 
+                { (loginStatus) && 
                     <>
                         <button onClick={ updateHandler }>메뉴 수정</button>
                         <button onClick={ deleteHandler }>메뉴 삭제</button>

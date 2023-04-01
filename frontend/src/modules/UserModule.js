@@ -2,7 +2,7 @@ import { createActions, handleActions } from "redux-actions";
 
 /* 초기 state값 */
 const initialState = {};
-
+ 
 /* 액션 타입 설정 */
 export const LOGIN = 'user/LOGIN';
 export const RESET_LOGIN_USER = 'user/RESET_LOGIN_USER';

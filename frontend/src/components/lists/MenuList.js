@@ -9,6 +9,12 @@ function MenuList() {
 
     const menuList = result.menulist;
 
+    const background = {
+        display: 'inlineBlock',
+        margin: '5px',
+    }
+
+
     const dispatch = useDispatch();
 
     useEffect(

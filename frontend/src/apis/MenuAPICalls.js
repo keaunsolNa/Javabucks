@@ -4,12 +4,10 @@ import { getMenulist, getMenu, registMenu, modifyMenu, deleteMenu } from "../mod
 // 메뉴 리스트 호출
 export function callGetMenuListAPI() {
     
-    console.log('getMenuList api calls...');
-    
     /* redux-thunk(미들 웨어)를 이용한 비동기 처리 */
     return async (dispatch, getState) => {
         /* Api의 axios 처리 참조  */
-        const result = await request('GET', `/menulist`);
+        const result = await request('GET', `/api/menulist`);
         /* action 생성 함수에 결과 전달하며 dispatch 호출 */
         dispatch(getMenulist(result));
     }
@@ -18,11 +16,9 @@ export function callGetMenuListAPI() {
 // 상세 메뉴 호출
 export function callGetMenuAPI(id) {
     
-    console.log('getMenu api calls...');
-
     return async (dispatch, getState) => {
     
-        const result = await request('GET', `/menu/${id}`);
+        const result = await request('GET', `/api/menu/${id}`);
     
         dispatch(getMenu(result));
     }
@@ -31,10 +27,9 @@ export function callGetMenuAPI(id) {
 // 메뉴 등록
 export function callRegistMenuAPI(menu) {
     
-    console.log('registMenu api calls...');
     return async (dispatch, getState) => {
         
-        const result = await request('POST', '/menu/', menu);
+        const result = await request('POST', '/api/menu/', menu);
     
         dispatch(registMenu(result));
     }
@@ -43,11 +38,9 @@ export function callRegistMenuAPI(menu) {
 // 메뉴 수정
 export function callModifyMenuAPI(menu) {
     
-    console.log('modifyMenu api calls...');
-    console.log(menu)
     return async (dispatch, getState) => {
     
-        const result = await request('PUT', `/menu/${menu.id}`, menu);
+        const result = await request('PUT', `/api/menu/${menu.id}`, menu);
     
         dispatch(modifyMenu(result));
     }
@@ -55,12 +48,9 @@ export function callModifyMenuAPI(menu) {
 
 export function callDeleteMenuAPI(id) {
     
-    console.log('deleteMenu api calls...');
-
     return async (dispatch, getState) => {
     
-        const result = await request('DELETE', `/menu/${id}`);
-        console.log('deleteMenu result : ', result);
+        const result = await request('DELETE', `/api/menu/${id}`);
     
         dispatch(deleteMenu(result));
     }

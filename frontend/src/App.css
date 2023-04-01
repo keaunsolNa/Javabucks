@@ -24,9 +24,7 @@ a {
 
 .menuItem {
   width: 300px;
-  background-color: lightgrey;
   cursor: pointer;
-  color: white;
   padding : 5px;
 }
 

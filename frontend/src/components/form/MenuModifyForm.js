@@ -10,7 +10,6 @@ function MenuModifyForm() {
     const navigate = useNavigate();
     const result = useSelector(state => state.menuReducer);
 
-    console.log(useParams())
     /* 입력 값 state 저장 */
     const [modifyMenu, setModifyMenu] = useState(
         {
