@@ -7,14 +7,16 @@ const initialState = {};
 const GET_MENULIST = 'menu/GET_MENULIST';
 const GET_MENU = 'menu/GET_MENU';
 const REGIST_MENU = 'menu/REGIST_MENU';
+const REGISTNI_MENU = 'menu/REGISTNI_MENU';
 const MODIFY_MENU = 'menu/MODIFY_MENU';
 const DELETE_MENU = 'menu/DELETE_MENU';
 
 /* 메뉴 관련 액션 함수 */
-export const { menu : { getMenulist, getMenu, getCategory, registMenu, modifyMenu, deleteMenu }} = createActions({
+export const { menu : { getMenulist, getMenu, getCategory, registMenu, registNIMenu, modifyMenu, deleteMenu }} = createActions({
     [GET_MENULIST]: (res) => ({ menulist : res }),
     [GET_MENU]: (res) => ({ menu : res }),
     [REGIST_MENU]: (res) => ({ regist : res }),
+    [REGISTNI_MENU]: (res) => ({ registNI : res }),
     [MODIFY_MENU]: (res) => ({ modify : res }),
     [DELETE_MENU]: (res) => ({ delete : res }),
 });
@@ -29,6 +31,9 @@ const menuReducer = handleActions(
             return payload;
         },
         [REGIST_MENU]: (state, { payload }) => {
+            return payload;
+        },
+        [REGISTNI_MENU]: (state, { payload }) => {
             return payload;
         },
         [MODIFY_MENU]: (state, { payload }) => {
