@@ -19,7 +19,7 @@ function MenuModifyForm() {
             drinkPrice: 0,
             drinkTypeKor: '에스프레소',
             drinkTypeEng: 'Espresso',
-            drinkSize: 'Short',
+            drinkSize: 'Tall',
             drinkHotIce: 'HotOnly',
             allergyTriggers: '',
             drinkInfo: '',

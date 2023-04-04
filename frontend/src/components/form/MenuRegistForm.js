@@ -148,8 +148,9 @@ function MenuRegistForm() {
         () => {
             /* 메뉴 등록 완료 확인 후 /menu로 이동 */
             if(result.regist) {
-                alert('메뉴 등록');
-                navigate(`/menu`);
+                // alert('메뉴 등록');
+                navigate(`/menu/registNI`)
+                // navigate(`/menu`);
             }
         },
         [result]

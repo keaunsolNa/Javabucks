@@ -48,7 +48,19 @@ export function callRegistMenuAPI(menu) {
     return async (dispatch, getState) => {
         
         const result = await request('POST', '/api/menu/', menu);
+
+        dispatch(registMenu(result));
+    }
+}
+
+// 영양성분 등록
+export function callRegistNIMenuAPI(NIInfo) {
     
+    return async (dispatch, getState) => {
+        
+        const result = await request('POST', '/api/menu/', NIInfo);
+    
+
         dispatch(registMenu(result));
     }
 }

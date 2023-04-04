@@ -4,6 +4,7 @@ import Main from './pages/Main';
 import Menus from './pages/Menus';
 import MenuDetail from './pages/MenuDetail';
 import MenuRegist from './pages/MenuRegist';
+import MenuRegistNI from './pages/MenuRegistNI';
 import MenuModify from './pages/MenuModify';
 import Login from './pages/Login';
 import Error from './pages/Error';
@@ -20,6 +21,7 @@ function App() {
             <Route index element={ <Menus/> }/>
             <Route path=":id" element={ <MenuDetail/> }/>
             <Route path="regist" element={ <MenuRegist/> }/>
+            <Route path="registNI" element={ <MenuRegistNI/>}/>
             <Route path="modify" >
               <Route path=":id" element={ <MenuModify/> }/>
             </Route>

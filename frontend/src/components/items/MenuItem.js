@@ -1,5 +1,4 @@
 import { Link } from  'react-router-dom';
-// backgroundimg={`(${ menu.DRINK_IMAGE })`}
 function MenuItem({ menu }) {
     return (
         <div className='menuImageWrapper'>
