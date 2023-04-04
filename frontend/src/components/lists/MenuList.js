@@ -59,6 +59,7 @@ function MenuList() {
         menuList && (
             <div>
                 <select name="drinkTypeKor" value={ menuCategory.drinkTypeKor } onChange={ onChangeHandler }>
+                    <option>전체</option>
                     <option>리저브 에스프레소</option>
                     <option>리저드 드립</option>
                     <option>리프레셔</option>

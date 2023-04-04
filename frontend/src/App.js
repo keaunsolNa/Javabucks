@@ -15,6 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={ <Layout/> }>
           <Route index element={ <Main/> }/>
+
           <Route path="menu" >
             <Route index element={ <Menus/> }/>
             <Route path=":id" element={ <MenuDetail/> }/>
@@ -23,8 +24,11 @@ function App() {
               <Route path=":id" element={ <MenuModify/> }/>
             </Route>
           </Route>
+
           <Route path="login" element={ <Login/> }/>
+
         </Route>
+        
         <Route path="*" element={ <Error/> }/>
       </Routes>
     </BrowserRouter>

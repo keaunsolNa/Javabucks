@@ -44,3 +44,11 @@ a {
 .menuItem:hover {
   background-color: gray;
 }
+
+.Nav a {
+  margin-left: 30px;
+}
+
+.Nav {
+  border-bottom: 1px solid;
+}

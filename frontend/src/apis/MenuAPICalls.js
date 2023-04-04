@@ -29,10 +29,16 @@ export function callGetMenuCategoryAPI(categoryName) {
     
     return async (dispatch, getState) => {
         console.log("category : " + categoryName)
-        const result = await request('GET', `/api/categorylist/"${categoryName}"`);
+
+        if(categoryName == "전체"){
+            const result = await request('GET', `/api/menulist`);
+            dispatch(getMenulist(result));
+        }
+        else {
+            const result = await request('GET', `/api/categorylist/"${categoryName}"`);
+            dispatch(getMenulist(result));
+        } 
     
-        console.log(result)
-        dispatch(getMenulist(result));
     }
 }
 
