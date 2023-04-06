@@ -30,7 +30,7 @@ export function callGetMenuCategoryAPI(categoryName) {
     return async (dispatch, getState) => {
         console.log("category : " + categoryName)
 
-        if(categoryName == "전체"){
+        if(categoryName === "전체"){
             const result = await request('GET', `/api/menulist`);
             dispatch(getMenulist(result));
         }
@@ -49,6 +49,8 @@ export function callRegistMenuAPI(menu) {
         
         const result = await request('POST', '/api/menu/', menu);
 
+        console.log('메뉴 등록 result : ')
+        console.log(result)
         dispatch(registMenu(result));
     }
 }
@@ -58,6 +60,7 @@ export function callRegistNIMenuAPI(NIInfo) {
     
     return async (dispatch, getState) => {
         
+        console.log('영양성분 등록 parameter : ' + NIInfo);
         const result = await request('POST', '/api/menu/', NIInfo);
     
 

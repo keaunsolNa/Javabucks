@@ -232,7 +232,7 @@ function MenuRegistForm() {
                 onChange={ fileChangeHandler }/>
             <br/>
             <br/>
-            <button onClick={ onClickHandler }>메뉴 등록</button>
+            <button onClick={ onClickHandler }>영양정보 등록</button>
         </div>
     );
 }
